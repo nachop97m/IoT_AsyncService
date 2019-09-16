@@ -21,3 +21,14 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 - Makefile.
 
 - Para el desarrollo de la aplicación, la idea era utilizar Pycharm, que además incluye soporte para git pero, al haber cumplido el período de prueba y dado su elevado coste,  se desarrollará utilizando el editor ATOM.
+
+
+## Requirements
+
+- Python3
+
+- Flask
+
+- SocketIO (pip install "python-socketio[client]")
+
+- Geopy (pip install geopy)
