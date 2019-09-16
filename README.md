@@ -27,6 +27,9 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 ## Requirements
 
+
+##### IoT Device Emulator:
+
 - Python3
 
 - Flask
