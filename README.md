@@ -22,6 +22,8 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 - Para el desarrollo de la aplicación, la idea era utilizar Pycharm, que además incluye soporte para git pero, al haber cumplido el período de prueba y dado su elevado coste,  se desarrollará utilizando el editor ATOM.
 
+- geoJSON.io for manually getting device locations
+
 
 ## Requirements
 
@@ -29,6 +31,6 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 - Flask
 
-- SocketIO (pip install "python-socketio[client]")
+- SocketIO
 
-- Geopy (pip install geopy)
+- Geopy
