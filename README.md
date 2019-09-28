@@ -22,7 +22,11 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 - Para el desarrollo de la aplicación, la idea era utilizar Pycharm, que además incluye soporte para git pero, al haber cumplido el período de prueba y dado su elevado coste,  se desarrollará utilizando el editor ATOM.
 
-- geoJSON.io for manually getting device locations
+- Implementación de test para la herramienta pytest.
+
+- Se valora la posibilidad de incorporar una pequeña Base de Datos MongoDB para que el microservicio almacene los datos que obtiene del dispositivo IoT.
+
+- geoJSON.io para obtener manualmente localizaciones de dispositivos en formato JSON.
 
 
 ## Requirements
@@ -37,3 +41,12 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 - SocketIO
 
 - Geopy
+
+- Pytest
+
+
+##### IoT Async Service:
+
+- Python3
+
+- Flask-SocketIO
