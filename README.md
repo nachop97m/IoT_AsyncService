@@ -24,6 +24,8 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 - Implementación de test para la herramienta pytest.
 
+- Uso de Travis para los tests de integración continua.
+
 - Se valora la posibilidad de incorporar una pequeña Base de Datos MongoDB para que el microservicio almacene los datos que obtiene del dispositivo IoT.
 
 - geoJSON.io para obtener manualmente localizaciones de dispositivos en formato JSON.
