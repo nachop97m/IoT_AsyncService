@@ -1,17 +1,11 @@
 import geopy.distance
 import time
-import requests
-from colorama import init, Fore
 import os
-import Random
 import socketio
 
 from datetime import datetime
 from random import random, randint, uniform
 from argparse import ArgumentParser
-
-#Line for colorama color autoreset:
-init(autoreset=True)
 
 #Initial temp value
 TEMP = uniform(-20,20)
@@ -73,6 +67,8 @@ def sendData(data):
 
     except:
 
+        print ('Failed when trying to send data')
+
 
 if __name__ == "__main__":
 
@@ -93,7 +89,7 @@ if __name__ == "__main__":
         dictForJson["time"] = str(datetime.now())
 
         print("\nGenerated data ")
-        print(Fore.YELLOW + str(dictForJson))
+        print(str(dictForJson))
         sendData(dictForJson)
 
-        time.sleep(Random.randint(1,5))
+        time.sleep(randint(1,5))
