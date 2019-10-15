@@ -18,4 +18,4 @@ jobs:         #Comienza la definición del 'trabajo' a ejecutar
           command: |     #Comando a ejecutar vía shell
             python3 -m pytest tests/test_data.py
       - store_test_results:     #Guardar resultado tras la ejecución
-          path: test-results
+          path: ".circleci/test-results/"
