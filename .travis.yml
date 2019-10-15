@@ -1,10 +1,10 @@
 language: python
 
 python:
-	- "3.6"		#Set pyhton version
+  - "3.6"		#Set pyhton version
 
 install:
-	- pip3 install -r requirements.txt		#Install dependencies
+  - pip3 install -r requirements.txt		#Install dependencies
 
 script:
-	- python3 -m pytest tests/test_data.py 		#Running tests
+  - python3 -m pytest tests/test_data.py 		#Running tests
