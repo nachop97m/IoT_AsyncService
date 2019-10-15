@@ -1,5 +1,5 @@
 Flask
 geopy
-"python-socketio[asyncio_client]"
+python-socketio[asyncio_client]
 flask-socketio
 pytest
