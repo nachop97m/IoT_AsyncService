@@ -72,17 +72,27 @@ Vamos a configurar la versión grautita de Circle CI, que tan solo permitirá ej
 
 Pasamos a explicar la configuración del fichero .circleci/config.yml:
 
-	version: 2	# Versión (2, 2.0 o 2.1) En este caso, la versión no simplifica el archivo ni reutiliza configuraciones por defecto. Además nos notificará de los cambios conflictivos.
+	version: 2	# Versión (2, 2.0 o 2.1) En este caso, la versión no
+	# simplifica el archivo ni reutiliza configuraciones por defecto.
+	# Además nos notificará de los cambios conflictivos.
 	
 	jobs: 	# Comienza la definición del 'trabajo' a ejecutar
 	
 	build:	# Es necesario indicar en caso de no usar workflws o flujos
 
-	docker:	# Pasamos a configurar nuestro contenedor, donde se ejecutarán nuestros tests
+	docker:	# Pasamos a configurar nuestro contenedor, donde se
+			# ejecutarán nuestros tests
 	
-	- image: circleci/python:3.6.8	# circleci nos ofrece varias imagenes base para nuestro contenedor según el lenguaje que vayamos a utilizar. En nuestro caso, utilizaremos la de python indicando la etiqueta con la versión correspondiente a la instalada localmente, dónde se ha probado la app y funciona correctamente. Las imágenes se pueden consultar en la web oficial de circleCI.
+	- image: circleci/python:3.6.8	# circleci nos ofrece varias
+	# imagenes base para nuestro contenedor según el lenguaje que
+	# vayamos a utilizar. En nuestro caso, utilizaremos la de python
+	# indicando la etiqueta con la versión correspondiente a la
+	# instalada localmente, dónde se ha probado la app y funciona
+	# correctamente. Las imágenes se pueden consultar en la web
+	# oficial de circleCI.
 	
-	steps:	# Conjunto de pasos a realizar, codificados mediante pares clave : valor
+	steps:	# Conjunto de pasos a realizar, codificados mediante
+			# pares clave : valor
 	
 	- checkout	# Pasar el código al directorio de trabajo
 	
@@ -93,7 +103,9 @@ Pasamos a explicar la configuración del fichero .circleci/config.yml:
 	  - save_cache:	
         	key: deps1-{{ .Branch }}{{ checksum "requirements.txt" }}
         	
-			# Cacheamos los paquetes para no reinstalarlos. Indicamos la rama actual y el archivo, el cual puede indicarse como un hash SHA256 codificado en base64.
+			# Cacheamos los paquetes para no reinstalarlos.
+			# Indicamos la rama actual y el archivo, el cual puede
+			# indicarse como un hash SHA256 codificado en base64.
 			
 	- run:
         command: |		# Lanzar tests
