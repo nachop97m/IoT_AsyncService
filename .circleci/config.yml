@@ -9,7 +9,7 @@ jobs:         #Comienza la definición del 'trabajo' a ejecutar
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
       - run:
           command: |     #Comando a ejecutar vía shell
-            pip3 install -r requirements.txt
+            pip3 install --user -r requirements.txt
       - save_cache:    #Cacheamos los paquetes para no reinstalarlos
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
