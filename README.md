@@ -64,6 +64,8 @@ Nos decantamos por TravisCI y CircleCI. Para éste último, nos damos de alta en
 
 ### Herramientas de construcción
 
+	buildtool: Makefile
+
 Para la construcción del proyecto, nos decantamos por Make. Incluimos un archivo Makefile con las directivas necesarias para instalar, levantar y parar nuestro microservicio. A continuación, se encuentra la información más detallada:
 
 - [Herramientas de Construcción](https://github.com/nachop97m/IoT_AsyncService/blob/master/docs/HerramientasConstruccion.md)
