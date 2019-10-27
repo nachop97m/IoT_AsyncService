@@ -7,21 +7,22 @@ from datetime import datetime
 from random import random, randint, uniform
 from argparse import ArgumentParser
 
-#Initial temp value
-TEMP = uniform(-20,20)
+# Initial temp value
+TEMP = uniform(-20, 20)
 
 
-#Initial coordinates (ETSIIT)
+# Initial coordinates (ETSIIT)
 LATITUDE = 37.19672790095874
 LONGITUDE = -3.6244958639144897
 
-PT =[LATITUDE, LONGITUDE]
+PT = [LATITUDE, LONGITUDE]
 
 sio = socketio.Client()
 
 sio.connect('http://localhost:5000')
 
-def get_nearby_point(origin = PT, km_distance=0.1, radius=180):
+
+def get_nearby_point(origin=PT, km_distance=0.1, radius=180):
     """
     Gets a nearby point, based on an origin, a distance and a direction.
 
@@ -72,11 +73,10 @@ def sendData(data):
 
 if __name__ == "__main__":
 
+    argp = ArgumentParser(description="Device data generator")
 
-
-    argp = ArgumentParser(description = "Device data generator")
-
-    argp.add_argument('-n', '--number', help = 'Device id identifier', required = True, default = "0")
+    argp.add_argument('-n', '--number', help='Device id identifier',
+                        required=True, default="0")
     arguments = argp.parse_args()
 
     dictForJson = {'device': str(arguments.number), 'seqNumber': 0, 'data': {}}
@@ -92,4 +92,4 @@ if __name__ == "__main__":
         print(str(dictForJson))
         sendData(dictForJson)
 
-        time.sleep(randint(1,5))
+        time.sleep(randint(1, 5))

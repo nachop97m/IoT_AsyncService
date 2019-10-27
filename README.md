@@ -69,3 +69,14 @@ Nos decantamos por TravisCI y CircleCI. Para éste último, nos damos de alta en
 Para la construcción del proyecto, nos decantamos por Make. Incluimos un archivo Makefile con las directivas necesarias para instalar, levantar y parar nuestro microservicio. A continuación, se encuentra la información más detallada:
 
 - [Herramientas de Construcción](https://github.com/nachop97m/IoT_AsyncService/blob/master/docs/HerramientasConstruccion.md)
+
+
+### Ejecución
+
+Rutas definidas:
+
+	/
+	/status
+	/last_received
+
+Las rutas incluidas de momento en este microservicio son dos: una que indica el status de la aplicación y otra que devuelve el último dato obtenido de un dispositivo ("/" redirige a /last_received). Este microservicio puede ser implementado en cualquier aplicación con un front-end que reciba los datos y, por ejemplo, los muestre en un mapa o una gráfica.
