@@ -14,7 +14,7 @@ test: clean
 install:
 	pip3 install --user -r requirements.txt
 
-run: test
+run: clean
 	python3 src/AsyncService.py
 
 device:
