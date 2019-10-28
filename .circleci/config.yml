@@ -1,6 +1,7 @@
 version: 2		#Versión (2, 2.0 o 2.1)
 jobs:         #Comienza la definición del 'trabajo' a ejecutar
   build:      #Es necesario indicar en caso de no usar workflws o flujos
+    working_directory: ~/IoT_AsyncService
     docker:   #Pasamos a configurar nuestro contenedor
       - image: circleci/python:3.6.8    #Imagen de python
     steps:             #Conjunto de pasos a realizar
@@ -10,6 +11,17 @@ jobs:         #Comienza la definición del 'trabajo' a ejecutar
       - run:
           command: |     #Comando a ejecutar vía shell
             pip3 install --user -r requirements.txt
+      - run:
+          command: |     #Comando a ejecutar vía shell
+            wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
+          environment:
+            DOCKERIZE_VERSION: v0.3.0
+      - run:
+          command: |     #Comando a ejecutar vía shell
+            python3 src/AsyncService.py
+      - run:
+          command: |     #Comando a ejecutar vía shell
+            dockerize -wait http://localhost:5000 -timeout 1m
       - save_cache:    #Cacheamos los paquetes para no reinstalarlos
           key: deps1-{{ .Branch }}-{{ checksum "requirements.txt" }}
           paths:
@@ -18,4 +30,4 @@ jobs:         #Comienza la definición del 'trabajo' a ejecutar
           command: |     #Comando a ejecutar vía shell
             python3 -m pytest tests/test_data.py
       - store_test_results:     #Guardar resultado tras la ejecución
-          path: ".circleci/test-results/"
+          path: "test-results"
