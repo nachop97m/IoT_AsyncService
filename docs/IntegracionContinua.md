@@ -1,5 +1,12 @@
 ## Integración Continua
 
+##### Tests
+
+Se incorporan tests para comprobar el correcto funcionamiento de la clase Data. Estos objetos serán empleados en el servidor para trabajar con los datos recibidos.
+
+También se testea el correcto funcionamiento del servicio. Para ello, se ha de levantar el servidor y posteriormente lanzar los tests, que emplean una especie de mock. Se mandará al servidor un device predeterminado, y se comprobará a través de un get que el valor devuelto por la URL correspondiente corresponde con el enviado a través del canal de comunicación de socketIO.
+
+
 ##### Travis
 
 Se linkea Travis-CI con el repositorio para la ejecución de tests de integración continua. 
@@ -20,9 +27,10 @@ Pasamos a explicar la configuración del fichero .travis.yml:
 	  - pip3 install -r requirements.txt		# Instalamos dependencias,
 	  					# indicadas en el archivo requirements.txt
 
-	before_install:
-  	  - python3 src/AsyncService.py 		#Lanzamos el servicio para
-  	  					# testearlo con nuestro device mockeado
+	before_script:
+  	  - python3 src/AsyncService.py & 	#Lanzamos el servicio para
+  	  - sleep 5s					# testearlo con nuestro device mockeado
+  	            					# Esperar 5 segundos para que levante el servicio
 
 	script:
 	  - python3 -m pytest tests/test_data.py	# Comando para lanzar tests
@@ -66,25 +74,13 @@ Pasamos a explicar la configuración del fichero .circleci/config.yml:
 	- run:
         command: |		# Comando a ejecutar vía shell
           pip3 install -r requirements.txt
-	
+
 	- run:
         command: |     #Comando a ejecutar vía shell
-          wget https://github.com/jwilder/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && sudo tar -C /usr/local/bin -xzvf dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz && rm dockerize-linux-amd64-$DOCKERIZE_VERSION.tar.gz
-        environment:
-          DOCKERIZE_VERSION: v0.3.0
-          
+          python3 src/AsyncService.py &
 	- run:
         command: |     #Comando a ejecutar vía shell
-          python3 src/AsyncService.py
-	- run:
-        command: |     #Comando a ejecutar vía shell
-          dockerize -wait http://localhost:5000 -timeout 1m
-          			# Una vez instalados los requirements, instalamos
-          			# la api creada por jwilder, que comprobará
-          			# el puerto 5000 y no permitirá que continúe la
-          			# ejecución hasta que el puerto esté ocupado, es
-          			# decir, hasta que el servicio se haya levantado
-          			# y los tests se puedan correr
+          sleep 5s     #Esperar 5 segundos para que el server se levante
           			
 	- save_cache:	
         key: deps1-{{ .Branch }}{{ checksum "requirements.txt" }}

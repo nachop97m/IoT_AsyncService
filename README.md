@@ -82,3 +82,10 @@ Rutas definidas:
 	/last_received
 
 Las rutas incluidas de momento en este microservicio son dos: una que indica el status de la aplicación y otra que devuelve el último dato obtenido de un dispositivo ("/" redirige a /last_received). Este microservicio puede ser implementado en cualquier aplicación con un front-end que reciba los datos y, por ejemplo, los muestre en un mapa o una gráfica.
+
+
+### PaaS
+
+El PaaS elegido para desplegar la aplicación será heroku. Una vez registrados, la herramienta permite levantar el servicio en local gracias a su CLI, o directamente en remoto. Además, Heroku es gratuito por lo que es un punto a favor para nuestro propósito de aprendizaje en esta asignatura.
+
+- [Documentación despliegue en Heroku](https://github.com/nachop97m/IoT_AsyncService/blob/master/docs/Heroku.md)
