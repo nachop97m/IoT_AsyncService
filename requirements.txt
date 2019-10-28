@@ -3,3 +3,4 @@ geopy
 python-socketio[asyncio_client]
 flask-socketio
 pytest
+requests

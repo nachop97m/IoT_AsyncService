@@ -55,6 +55,8 @@ Por último, se empleará socketIO para la recepción asícrona de mensajes desd
 
 - pytest
 
+- requests
+
 ### Integración Continua
 
 Nos decantamos por TravisCI y CircleCI. Para éste último, nos damos de alta en su web con la versión gratuita. En ambos casos la puesta en marcha radica en enlazar ambas herramientas con el repositorio, en el que previamente se ha añadido un archivo de configuración específico para nuestra aplicación. Para más información, consultar la documentación específica: 
