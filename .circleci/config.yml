@@ -18,7 +18,7 @@ jobs:         #Comienza la definición del 'trabajo' a ejecutar
             DOCKERIZE_VERSION: v0.3.0
       - run:
           command: |     #Comando a ejecutar vía shell
-            python3 src/AsyncService.py
+            python3 src/AsyncService.py &
       - run:
           command: |     #Comando a ejecutar vía shell
             dockerize -wait http://localhost:5000 -timeout 1m
